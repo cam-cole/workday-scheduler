@@ -15,7 +15,10 @@ var timeTrackColor = function(timeBlock) {
     var timeObject = moment(time, 'HH:mm a');
     console.log(timeObject);
 
-    if (moment().isAfter(timeObject)) {
+    if(Math.abs(moment().diff(timeObject, "hours")) <= 1) {
+        $(timeBlock).children('textarea').addClass("present");
+    }
+    else if (moment().isAfter(timeObject)) {
         $(timeBlock).children('textarea').addClass("past");
     }
     else if (moment().isBefore(timeObject)) {
@@ -30,4 +33,7 @@ var timeAudit = function(timeArray) {
     }
 }
 
-timeAudit(timeBlockArray);
+// Call timeAudit
+setInterval(function() {
+    timeAudit(timeBlockArray);
+}, 5000);
