@@ -33,7 +33,10 @@ var timeAudit = function(timeArray) {
     }
 }
 
-// Call timeAudit
+// Recurring call for timeAudit
 setInterval(function() {
     timeAudit(timeBlockArray);
 }, 5000);
+
+// time audit when open page
+timeAudit(timeBlockArray);
